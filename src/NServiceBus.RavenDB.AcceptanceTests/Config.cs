@@ -124,7 +124,8 @@ public static class TestConfigurationExtensions
         dbInfo = new TestDatabaseInfo
         {
             Url = docStore.Url,
-            DatabaseName = docStore.DefaultDatabase
+            DatabaseName = docStore.DefaultDatabase,
+            DocStore = docStore
         };
         return cfg;
     }
@@ -134,5 +135,6 @@ public class TestDatabaseInfo
 {
     public string Url { get; set; }
     public string DatabaseName { get; set; }
+    public DocumentStore DocStore { get; set; }
 }
 

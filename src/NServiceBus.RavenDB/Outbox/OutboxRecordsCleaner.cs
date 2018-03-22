@@ -37,7 +37,8 @@
 
                 var bulkOpts = new BulkOperationOptions
                 {
-                    AllowStale = true
+                    AllowStale = true,
+                    MaxOpsPerSec = 1024
                 };
 
                 var operation = documentStore.DatabaseCommands.DeleteByIndex(indexName, query, bulkOpts);

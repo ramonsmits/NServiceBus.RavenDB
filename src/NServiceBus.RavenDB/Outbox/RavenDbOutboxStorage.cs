@@ -55,7 +55,7 @@
 
                 var frequencyToRunDeduplicationDataCleanup = Settings.GetOrDefault<TimeSpan?>("Outbox.FrequencyToRunDeduplicationDataCleanup") ?? TimeSpan.FromMinutes(1);
 
-                cleanupTimer = new Timer(PerformCleanup, null, TimeSpan.FromMinutes(1), frequencyToRunDeduplicationDataCleanup);
+                cleanupTimer = new Timer(PerformCleanup, null, frequencyToRunDeduplicationDataCleanup, frequencyToRunDeduplicationDataCleanup);
             }
 
             protected override void OnStop()

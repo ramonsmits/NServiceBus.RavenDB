@@ -22,8 +22,8 @@
 
             var databaseName = getDatabaseName(messageContext);
             var documentSession = string.IsNullOrEmpty(databaseName)
-                ? documentStoreWrapper.DocumentStore.OpenSession()
-                : documentStoreWrapper.DocumentStore.OpenSession(databaseName);
+                ? documentStoreWrapper.DocumentStore.OpenNagleSession()
+                : documentStoreWrapper.DocumentStore.OpenNagleSession(databaseName);
 
             documentSession.Advanced.AllowNonAuthoritativeInformation = false;
             documentSession.Advanced.UseOptimisticConcurrency = true;

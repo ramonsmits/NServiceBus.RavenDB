@@ -101,7 +101,7 @@
                 return sessionCreator.OpenSession(incomingContext.PhysicalMessage.Headers);
             }
 
-            return DocumentStore.OpenSession();
+            return DocumentStore.OpenNagleSession();
         }
 
         static string GetOutboxRecordIdWithoutEndpointName(string messageId) => $"Outbox/{messageId.Replace('\\', '_')}";

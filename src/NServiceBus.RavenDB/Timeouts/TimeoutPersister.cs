@@ -100,7 +100,7 @@ namespace NServiceBus.TimeoutPersisters.RavenDB
 
         public void Add(CoreTimeoutData timeout)
         {
-            using (var session = DocumentStore.OpenSession())
+            using (var session = DocumentStore.OpenNagleSession())
             {
                 session.Store(new Timeout(timeout));
                 session.SaveChanges();
@@ -109,7 +109,7 @@ namespace NServiceBus.TimeoutPersisters.RavenDB
 
         public bool TryRemove(string timeoutId, out CoreTimeoutData timeoutData)
         {
-            using (var session = DocumentStore.OpenSession())
+            using (var session = DocumentStore.OpenNagleSession())
             {
                 session.Advanced.UseOptimisticConcurrency = true;
 
@@ -167,7 +167,7 @@ namespace NServiceBus.TimeoutPersisters.RavenDB
 
         public CoreTimeoutData Peek(string timeoutId)
         {
-            using (var session = DocumentStore.OpenSession())
+            using (var session = DocumentStore.OpenNagleSession())
             {
                 var timeoutData = session.Load<Timeout>(timeoutId);
                 if (timeoutData != null)
